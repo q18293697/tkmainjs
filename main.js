@@ -62,7 +62,7 @@ function isZanting() {
         if (反状态 == "开始") {//反状态为开始时，脚本要暂停，即被阻塞
             if(!isShow){
                 isShow = true
-                console.show()
+                // console.show()
             }
             toastLog("脚本暂停中");
             sleep(2000) //这个只影响主程序，就是你可以在这期间点开始运行，在sleep结束后，主程序会继续运行
@@ -70,8 +70,8 @@ function isZanting() {
         else{//反状态为暂停时，脚本要运行，即跳出死循环
             if(isShow){
                 isShow = false
-                console.hide()
-                console.clear()
+                // console.hide()
+                // console.clear()
             }
             break
         }
