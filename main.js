@@ -19,6 +19,7 @@ var g_runTimes = 0;
 // log('path', path)
 // var s = require('D:/pro-XM/03douyin/autojs-tiktok/myPublic.js')
 // var s = require('myPublic.js')
+//remi 2340*1080   2160*1080
 log('设备ID:'+deviceId, g_width, g_height)
 var 悬浮窗 = floaty.window(
     <frame h="auto" w="auto" gravity="center" bg="#00000000">
@@ -134,7 +135,7 @@ function tk_sixin()
         let comName = currentActivity()
         log('comName', comName)
         // comName com.ss.android.ugc.aweme.main.MainActivity 首页,包括好友,收件箱, 个人主页都算主页
-        if(comName.indexOf('com.ss.android.ugc.aweme.main.MainActivity')>-1){
+        if(comName.indexOf('aweme.main.MainActivity')>-1){
             if(className('android.widget.ImageView').depth(20).exists()){
                 click_Ojb(className('android.widget.ImageView').depth(20))
             }else{
