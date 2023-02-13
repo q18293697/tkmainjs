@@ -19,7 +19,7 @@ var g_runTimes = 0;
 // log('path', path)
 // var s = require('D:/pro-XM/03douyin/autojs-tiktok/myPublic.js')
 // var s = require('myPublic.js')
-//remi 2340*1080   2160*1080
+//remi 2340*1080  benji: 2160*1080
 log('设备ID:'+deviceId, g_width, g_height)
 var 悬浮窗 = floaty.window(
     <frame h="auto" w="auto" gravity="center" bg="#00000000">
@@ -108,7 +108,16 @@ function mainSub(){
         runTimes ++
         if(runTimes >= 10){
             log('运行结束')
-            break
+            searchUsers = [
+                {'userName':'用户测试','state':''},
+                {'userName':'yonghu1','state':''},
+                {'userName':'yonghu2','state':''},
+                {'userName':'yonghu3','state':''},
+                {'userName':'yonghu4','state':''},
+                {'userName':'yonghu5','state':''},
+                {'userName':'yonghu6','state':''}
+            ]
+            // break
         }
     }
 }
@@ -138,7 +147,10 @@ function tk_sixin()
         if(comName.indexOf('aweme.main.MainActivity')>-1){
             if(className('android.widget.ImageView').depth(20).exists()){
                 click_Ojb(className('android.widget.ImageView').depth(20))
-            }else{
+            }else if(className('android.widget.ImageView').depth(19).exists()){
+                click_Ojb(className('android.widget.ImageView').depth(19))
+            }
+            else{
                 click('首页')
             }
         }
@@ -151,8 +163,9 @@ function tk_sixin()
             //输入要搜索的文本
             setText(searchOjb.userName)
             sleep(500)
-            //点击搜索
-            click_Ojb(packageName('com.ss.android.ugc.trill').className('android.widget.FrameLayout').depth(10).drawingOrder(3))
+            //点击搜索  控件位置不固定,选择用坐标点击
+            // click_Ojb(packageName('com.ss.android.ugc.trill').className('android.widget.FrameLayout').depth(9).drawingOrder(3))
+            click(g_width * 0.851852, g_height * 0.037037)
             sleep(2000)
             //点击用户
             click_Ojb(className('android.widget.TextView').depth(15).drawingOrder(1).text('用户'))
@@ -263,6 +276,8 @@ function tk_pinglun_zb()
         if(comName.indexOf('com.ss.android.ugc.aweme.main.MainActivity')>-1){
             if(className('android.widget.ImageView').depth(20).exists()){
                 click_Ojb(className('android.widget.ImageView').depth(20))
+            }else if(className('android.widget.ImageView').depth(19).exists()){
+                click_Ojb(className('android.widget.ImageView').depth(19))
             }else{
                 click('首页')
             }
@@ -363,10 +378,12 @@ function getHandsetId(){
 }
 function qidongtk(){
     let comName = currentActivity()
+    log(comName)
     if(comName){
         if(comName.indexOf('com.ss.android')==-1){
             log('tiktok-APP不存在,启动tiktok')
             launchApp("TikTok");
+            // launchApp("com.zhiliaoapp.musically");
         }
     }
 }
